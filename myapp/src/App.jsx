@@ -121,64 +121,123 @@
 
 
 //Act 3
-import React, { useState, useEffect } from "react";
+// import React, { useState, useEffect } from "react";
 
-const UserList = () => {
-  const [users, setUsers] = useState([]); // State to store the list of users
-  const [loading, setLoading] = useState(true); // State to handle loading state
+// const UserList = () => {
+//   const [users, setUsers] = useState([]); // State to store the list of users
+//   const [loading, setLoading] = useState(true); // State to handle loading state
 
-  // useEffect to simulate fetching user data
+//   // useEffect to simulate fetching user data
+//   useEffect(() => {
+//     // Simulated API call
+//     const fetchUsers = async () => {
+//       setLoading(true);
+//       // Simulated user data
+//       const userData = [
+//         { id: 1, username: "Siddharth@123", name: "Siddharth Misal" , password: "12345678" },
+//         { id: 2, username: "Swapnil@333", name: "Swapnil Devkate" , password: "88889999"},
+//         { id: 3, username: "testUser", name: "Test User" , password: "54546479" },
+//       ];
+//       setTimeout(() => {
+//         setUsers(userData); // Update the users state
+//         setLoading(false); // Set loading to false
+//       }, 1000); // Simulate network delay
+//     };
+
+//     fetchUsers(); // Call the fetchUsers function
+//   }, []); // Empty dependency array ensures it runs only once
+
+//   return (
+//     <div style={{ textAlign: "center", marginTop: "50px" }}>
+//       <h2>User List</h2>
+//       {loading ? (
+//         <p>Loading users...</p>
+//       ) : (
+//         <ul style={{ listStyle: "none", padding: 0 }}>
+//           {users.map((user) => (
+//             <li
+//               key={user.id}
+//               style={{
+//                 margin: "10px 0",
+//                 padding: "10px",
+//                 border: "1px solid #ccc",
+//                 borderRadius: "5px",
+//                 display: "inline-block",
+//                 width: "200px",
+//                 textAlign: "left",
+//               }}
+//             >
+//               <strong>Username:</strong> {user.username}
+//               <br />
+//               <strong>Name:</strong> {user.name}
+//               <br />
+//               <strong>Password:</strong> {user.password}
+//             </li>
+//           ))}
+//         </ul>
+//       )}
+//     </div>
+//   );
+// };
+
+// export default UserList;
+
+
+
+
+//Login page day 6
+// import Home from './components/home'
+// import About from './components/about'
+// import Login from './components/login'
+// import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+// import './App.css'
+
+// function Header() {
+//   return (
+//     <ul>
+//       <h1>Vasantdada Patil College of Engg </h1>
+//       <li><Link to="/home">Home</Link></li>
+//       <li><Link to="/about">About</Link></li>
+//       <li><Link to="/login">Login</Link></li>
+//     </ul>
+//   )
+// }
+
+// function App() {
+//   return (
+//     <div>
+//       <BrowserRouter>
+//         <Header />
+//         <Routes>
+//           <Route path="/home" element={<Home />}></Route>
+//           <Route path="/about" element={<About />}></Route>
+//           <Route path="/login" element={<Login />}></Route>
+//         </Routes>
+//       </BrowserRouter>
+//     </div>
+//   )
+// }
+// export default App
+
+
+
+
+
+
+
+
+
+import { useEffect } from "react"
+function App() {
   useEffect(() => {
-    // Simulated API call
-    const fetchUsers = async () => {
-      setLoading(true);
-      // Simulated user data
-      const userData = [
-        { id: 1, username: "Siddharth@123", name: "Siddharth Misal" , password: "12345678" },
-        { id: 2, username: "Swapnil@333", name: "Swapnil Devkate" , password: "88889999"},
-        { id: 3, username: "testUser", name: "Test User" , password: "54546479" },
-      ];
-      setTimeout(() => {
-        setUsers(userData); // Update the users state
-        setLoading(false); // Set loading to false
-      }, 1000); // Simulate network delay
-    };
-
-    fetchUsers(); // Call the fetchUsers function
-  }, []); // Empty dependency array ensures it runs only once
-
+    fetch("https://jsonplaceholder.typicode.com/users").then(
+      response => response.json()
+    ).then(json => console.log(json))
+  }, [])
   return (
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
-      <h2>User List</h2>
-      {loading ? (
-        <p>Loading users...</p>
-      ) : (
-        <ul style={{ listStyle: "none", padding: 0 }}>
-          {users.map((user) => (
-            <li
-              key={user.id}
-              style={{
-                margin: "10px 0",
-                padding: "10px",
-                border: "1px solid #ccc",
-                borderRadius: "5px",
-                display: "inline-block",
-                width: "200px",
-                textAlign: "left",
-              }}
-            >
-              <strong>Username:</strong> {user.username}
-              <br />
-              <strong>Name:</strong> {user.name}
-              <br />
-              <strong>Password:</strong> {user.password}
-            </li>
-          ))}
-        </ul>
-      )}
+    <div>
+
     </div>
-  );
-};
-
-export default UserList;
-
+  )
+}
+export default App
